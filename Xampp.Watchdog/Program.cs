@@ -175,16 +175,16 @@ namespace Xampp.Watchdog
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("[" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + "]: Apache started with id " + apache.Id);
                 Console.WriteLine("[" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + "]: MySQL started with id " + mysql.Id);
-                string ip;
-                using (WebClient webclient = new WebClient())
-                {
-                    ip = webclient.DownloadString("http://bot.whatismyipaddress.com/");
-                }
-                Console.ResetColor();
-                Console.WriteLine("[" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + "]: IP Address detected as " + ip);
                 DateTime LastBackUp = DateTime.MinValue;
+                string ip;
                 do
                 {
+                    using (WebClient webclient = new WebClient())
+                    {
+                        ip = webclient.DownloadString("http://bot.whatismyipaddress.com/");
+                    }
+                    Console.ResetColor();
+                    Console.WriteLine("[" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + "]: IP Address detected as " + ip);
                     CheckWindowsUpdate();
                     try
                     {
